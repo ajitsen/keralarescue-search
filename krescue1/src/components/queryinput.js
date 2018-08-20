@@ -42,6 +42,15 @@ class QueryInput extends Component {
           <button className="btn btn-primary" type="submit"><i className="glyphicon glyphicon-search"/></button>
         </div>
       </div>
+      <div className="row app_icon_row">
+        <button className="iconsbaby70px"/>
+        <button className="iconspregnant70px"/>
+        <button className="iconselder70px"/>
+        <button className="iconshungry70px"/>
+        <button className="iconsmedicine70px"/>
+        <button className="iconslate70px"/>
+        <button className="iconspeople70px"/>
+      </div>
     </form>;
   }
 }

@@ -23,17 +23,12 @@ const SearchAppRenderer = props => {
   let row3 = null;
   let row4 = null;
 
-
    if (response) {
-
       row2 = <div className="row app_vsp05">
       <Stats qtime={header.QTime}
         numFound={response.numFound}
         start={response.start}
         len={response.docs.length} />
-      <div className="col-sm-4">
-          <strong>Refine search</strong>
-      </div>
    </div>;
 
 
@@ -44,6 +39,7 @@ const SearchAppRenderer = props => {
         <Results searchResults={response.docs} highlighting={hl}/>
         {/*Right Rail*/}
         <div className="col-sm-4">
+          <h4><strong>Refine search</strong></h4>
           <h5 className="app_vsp25">District:</h5>
           <TermFacetList multiselect={false}
              facet={"district"}
