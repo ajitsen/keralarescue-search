@@ -44,4 +44,5 @@ package-lock.json
 data*.json
 data*.csv
 *.tgz
+bundle.js
 
