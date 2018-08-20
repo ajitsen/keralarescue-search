@@ -40,6 +40,18 @@ const SearchAppRenderer = props => {
         {/*Right Rail*/}
         <div className="col-sm-4">
           <h4><strong>Refine search</strong></h4>
+          <h5 className="app_vsp25">Need:</h5>
+          <QueryFacetList facets={[
+                { facet: "needfood", label: "Food"},
+                { facet: "needcloth", label: "Cloth" },
+                { facet: "needkit_util", label: "Kit" },
+                { facet: "needmed", label: "Medicine" },
+                { facet: "needrescue", label: "Rescue" },
+                { facet: "needtoilet", label: "Toilet" },
+                { facet: "needwater", label: "Water" }]}
+              facetData={facets}
+              searchParams={props.searchParams}
+              handleActions={props.handleActions} />
           <h5 className="app_vsp25">District:</h5>
           <TermFacetList multiselect={false}
              facet={"district"}
@@ -52,19 +64,7 @@ const SearchAppRenderer = props => {
             buckets={facets.place.buckets}
             filters={props.searchParams.filter_place}
             handleActions={props.handleActions} />
-          <h5 className="app_vsp25">Need:</h5>
-          <QueryFacetList facets={[
-                { facet: "needfood", label: "Food"},
-                { facet: "needcloth", label: "Cloth" },
-                { facet: "needkit_util", label: "Kit" },
-                { facet: "needmed", label: "Medicine" },
-                { facet: "needrescue", label: "Rescue" },
-                { facet: "needtoilet", label: "Toilet" },
-                { facet: "needwater", label: "Water" }
-            ]}
-            facetData={facets}
-            searchParams={props.searchParams}
-            handleActions={props.handleActions} />
+
         </div>
       </div>;
 
