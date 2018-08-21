@@ -8,7 +8,7 @@ from feeder.volunteer_transformer import process_volunteer_feed
 
 
 def process(sheet_url, collection):
-    json_file = save_data_json(sheet_url, True)
+    json_file = save_data_json(sheet_url)
     csv_file = json_file.replace(".json", ".csv")
 
     if collection == CAMP_COLLECTION:
