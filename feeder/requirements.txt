@@ -6,4 +6,5 @@ pytz==2018.5
 setuptools==40.0.0 
 six==1.11.0 
 wheel==0.31.1 
-
+python-slugify==1.2.5  
+Unidecode       1.0.22 

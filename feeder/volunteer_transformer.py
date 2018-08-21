@@ -1,4 +1,3 @@
-import math
 import pandas as pd
 
 from feeder.common.logger import log
