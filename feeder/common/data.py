@@ -1,3 +1,6 @@
+import math
+
+
 def get_dist_name(dist_search_str):
     if not dist_search_str:
         return
@@ -33,17 +36,15 @@ def get_location_concact(location):
     if camp:
         string += str(camp).strip()
 
-    if addr and addr != '':
-        if string != '':
-            string += ', '
+    if addr and addr != '' and not math.isnan(region):
         for part in addr.split(','):
             part = part.strip()
-            if part.lower() not in string.lower():
+            if part.lower() not in string.lower() and part != '':
                 if string != '':
                     string += ', '
                 string += part
 
-    if region and region != '':
+    if region and region != '' and not math.isnan(region):
         if string != '':
             string += ', '
         string += str(region).strip()

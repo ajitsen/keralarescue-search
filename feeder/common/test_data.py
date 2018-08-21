@@ -14,5 +14,5 @@ class Test_Data(TestCase):
         self.assertEqual(get_dist_name('alappuzha'), 'Alappuzha')
 
     def test_get_location_concact(self):
-        loc = ("Apporu,Madrassa Palli,Mannancheery", "Apporu,Madrassa Palli,North aryad P.O,Mannancheery", None)
-        self.assertEqual("Apporu,Madrassa Palli,Mannancheery, North aryad P.O,Mannancheery", get_location_concact(loc))
+        loc = ("Apporu,Madrassa Palli,Mannancheery", "Apporu,Madrassa Palli,North aryad P.O,Mannancheery", "nan")
+        self.assertEqual("Apporu,Madrassa Palli,Mannancheery, North aryad P.O", get_location_concact(loc))
