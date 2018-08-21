@@ -1,6 +1,6 @@
 import pandas as pd
 
-from feeder.common.logger import log
+from common.logger import log
 
 def match_str(value, expected):
     return value and isinstance(value, str) and value.lower() == expected.lower()

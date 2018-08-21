@@ -1,10 +1,12 @@
-from feeder.camp_transformer import process_camps_feed
-from feeder.common.config import CAMP_SHEET, RESOURCE_SHEET, VOLUNTEER_SHEET
-from feeder.common.solr_helper import CAMP_COLLECTION, feed_csv_to_solr, VOLUNTEER_COLLECTION, RESOURCE_COLLECTION, \
+#!/home/ajitsen/PythonEnvironments/kr_search/bin/python
+
+from camp_transformer import process_camps_feed
+from common.config import CAMP_SHEET, RESOURCE_SHEET, VOLUNTEER_SHEET
+from common.solr_helper import CAMP_COLLECTION, feed_csv_to_solr, VOLUNTEER_COLLECTION, RESOURCE_COLLECTION, \
     get_data_frame_from_json
-from feeder.common.utils import save_data_json
-from feeder.resource_transformer import process_supply_feed
-from feeder.volunteer_transformer import process_volunteer_feed
+from common.utils import save_data_json
+from resource_transformer import process_supply_feed
+from volunteer_transformer import process_volunteer_feed
 
 
 def process(sheet_url, collection):

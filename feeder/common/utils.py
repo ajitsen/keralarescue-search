@@ -3,13 +3,13 @@ import json
 import time
 import urllib.request
 
-from feeder.common import config as config
-from feeder.common.logger import log
-from feeder.common.my_pandas import pandas_read_tsv_str
+from common import config as config
+from common.logger import log
+from common.my_pandas import pandas_read_tsv_str
 
 
 def my_sleep(sec):
-    from feeder.common.logger import log
+    from common.logger import log
     if sec < 2:
         log("Sleeping. < 2sec")
         time.sleep(sec)
@@ -23,7 +23,7 @@ def get_md5(string):
 
 
 def get_data_from_url(url, cache=False):
-    from feeder.common.logger import log
+    from common.logger import log
 
     if not cache:
         log("Getting data from " + url)

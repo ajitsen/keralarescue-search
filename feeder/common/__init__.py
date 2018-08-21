@@ -1,3 +1,3 @@
-import feeder.common.logger
+import common.logger
 
 logger.run_id = logger.get_run_id()

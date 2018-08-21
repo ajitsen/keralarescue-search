@@ -1,6 +1,6 @@
 import pandas as pd
 
-from feeder.common.logger import log
+from common.logger import log
 
 
 def has_car(car):

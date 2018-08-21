@@ -1,7 +1,7 @@
 import pandas as pd
 from slugify import slugify
 
-from feeder.common.logger import log
+from common.logger import log
 
 
 def process_camps_feed(data_frame, csv_file):

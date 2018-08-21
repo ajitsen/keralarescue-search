@@ -1,5 +1,5 @@
 from unittest import TestCase
-from feeder.common.data import get_dist_name, get_location_concact
+from common.data import get_dist_name, get_location_concact
 
 
 class Test_Data(TestCase):

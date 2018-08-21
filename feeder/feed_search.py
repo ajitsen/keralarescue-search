@@ -5,11 +5,11 @@ import os
 
 import pandas as pd
 
-import feeder.common.config as config
-from feeder.common.data import get_dist_name
-from feeder.common.logger import log
-from feeder.common.solr_helper import get_last_known_id_in_solr, feed_csv_to_solr, RESCUE_COLLECTION
-from feeder.common.utils import my_sleep, get_data_from_url
+import common.config as config
+from common.data import get_dist_name
+from common.logger import log
+from common.solr_helper import get_last_known_id_in_solr, feed_csv_to_solr, RESCUE_COLLECTION
+from common.utils import my_sleep, get_data_from_url
 
 
 def save_data_json(last_id, fetch=True):

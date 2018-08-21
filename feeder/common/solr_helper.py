@@ -3,9 +3,9 @@ import os
 import urllib.request
 import pandas as pd
 
-from feeder.common import config as config
-from feeder.common.logger import log
-from feeder.common.utils import my_sleep
+from common import config as config
+from common.logger import log
+from common.utils import my_sleep
 
 RESCUE_COLLECTION = "krescue10"
 
