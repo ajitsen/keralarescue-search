@@ -1,6 +1,7 @@
 import json
 import os
 import urllib.request
+import pandas as pd
 
 from feeder.common import config as config
 from feeder.common.logger import log
@@ -9,8 +10,9 @@ from feeder.common.utils import my_sleep
 RESCUE_COLLECTION = "krescue10"
 
 CAMP_COLLECTION = "camp1"
-VOLUNTEER_COLLECTION = "vol1"
+VOLUNTEER_COLLECTION = "volunteers1"
 RESOURCE_COLLECTION = "resource1"
+
 
 def get_last_known_id_in_solr():
     url = config.SOLR_URL + "?fl=id&q=*:*&rows=1&sort=last_modified%20desc"
@@ -31,3 +33,11 @@ def feed_csv_to_solr(collection, csv_file):
         log("Feeding data to solr cmd:" + cmd)
         log(os.popen(cmd).readlines())
         my_sleep(10)
+
+
+def get_data_frame_from_json(json_file, must_fields=None):
+    with open(json_file) as fh:
+        data_frame = pd.read_json(fh, dtype=False)
+        if isinstance(must_fields, list) and len(must_fields) != 0:
+            data_frame.dropna(subset=must_fields, inplace=True)
+        return data_frame
