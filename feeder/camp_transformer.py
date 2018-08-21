@@ -9,7 +9,7 @@ def process_camps_feed(data_frame, csv_file):
     # FIXME add logic to call place finder
     data_frame['latlng'] = pd.Series(['29.327685626916956,48.055961771640426' for location in data_frame['campName']])
     # FIXME add district
-    data_frame['district_full'] = pd.Series(["Dummy District" for code in data_frame['campName']])
+    data_frame['district_full'] = pd.Series(["District" for code in data_frame['campName']])
     # FIXME process date modified
     data_frame['last_modified'] = pd.Series(["2018-08-16T09:19:24.604Z" for code in data_frame['campName']])
     # FIXME get processed_needs

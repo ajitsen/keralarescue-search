@@ -10,7 +10,7 @@ from feeder.common.utils import my_sleep
 RESCUE_COLLECTION = "krescue10"
 
 CAMP_COLLECTION = "camp1"
-VOLUNTEER_COLLECTION = "vol1"
+VOLUNTEER_COLLECTION = "volunteers1"
 RESOURCE_COLLECTION = "resource1"
 
 

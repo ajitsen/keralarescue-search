@@ -15,7 +15,7 @@ def process(sheet_url, collection):
         data_frame = get_data_frame_from_json(json_file, must_fields=['campName'])
         process_camps_feed(data_frame, csv_file)
     elif collection == VOLUNTEER_COLLECTION:
-        data_frame = get_data_frame_from_json(json_file, must_fields=['contactNo'])
+        data_frame = get_data_frame_from_json(json_file, must_fields=['mobileNumber'])
         process_volunteer_feed(data_frame, csv_file)
     else:
         data_frame = get_data_frame_from_json(json_file, must_fields=['contactNo'])
@@ -24,6 +24,6 @@ def process(sheet_url, collection):
 
 
 # MAIN
-process(CAMP_SHEET, CAMP_COLLECTION)
+#process(CAMP_SHEET, CAMP_COLLECTION)
 process(VOLUNTEER_SHEET, VOLUNTEER_COLLECTION)
-process(RESOURCE_SHEET, RESOURCE_COLLECTION)
+#process(RESOURCE_SHEET, RESOURCE_COLLECTION)
