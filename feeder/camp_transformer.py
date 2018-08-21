@@ -1,11 +1,11 @@
 import pandas as pd
+from slugify import slugify
 
-from feeder.camps_feeder import get_id
 from feeder.common.logger import log
 
 
 def process_camps_feed(data_frame, csv_file):
-    data_frame['id'] = pd.Series([get_id(camp_name) for camp_name in data_frame['campName']])
+    data_frame['id'] = pd.Series([get_camp_id(camp_name) for camp_name in data_frame['campName']])
     # FIXME add logic to call place finder
     data_frame['latlng'] = pd.Series(['29.327685626916956,48.055961771640426' for location in data_frame['campName']])
     # FIXME add district
@@ -40,3 +40,8 @@ def process_camps_feed(data_frame, csv_file):
     }, inplace=True)
     data_frame.to_csv(csv_file, encoding="utf-8", index=False)
     return csv_file
+
+
+def get_camp_id(camp_name):
+    log("Processing camp " + str(camp_name))
+    return slugify(camp_name)
