@@ -96,9 +96,23 @@
 
 	var Contact = function Contact() {
 	  return _react2.default.createElement(
-	    'h1',
+	    'div',
 	    null,
-	    'Contact'
+	    _react2.default.createElement(
+	      'h1',
+	      null,
+	      'Contact:'
+	    ),
+	    _react2.default.createElement(
+	      'h4',
+	      null,
+	      '\xA0\xA0ajitsen [at] tokostudios [dot] com'
+	    ),
+	    _react2.default.createElement(
+	      'a',
+	      { href: 'https://github.com/ajitsen/keralarescue-search/tree/master/krescue1' },
+	      '\xA0\xA0Github'
+	    )
 	  );
 	};
 
@@ -27712,7 +27726,7 @@
 	        _react2.default.createElement(
 	          'a',
 	          { className: 'navbar-brand', href: '#' },
-	          'Recipe Recommendation'
+	          'Kerala Rescue Search'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -27760,7 +27774,7 @@
 /* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -27886,9 +27900,8 @@
 	    value: function getSolrSearchParams() {
 	      var params = this.getUrlSearchParams();
 	      var page = parseInt(params.page || 0);
-          console.log(process.env, "============");
 	      var solrParams = {
-	        solrSearchUrl: process.env.NODE_ENV !== 'production' ? _conf2.default.solrSearchUrlDev : _conf2.default.solrSearchUrl,
+	        solrSearchUrl: _conf2.default.solrSearchUrl,
 	        query: params.query || "*:*",
 	        offset: page * _conf2.default.pageSize,
 	        length: _conf2.default.pageSize,
@@ -27896,7 +27909,6 @@
 	        highlightParams: Object.assign({}, _conf2.default.highlightParams),
 	        filter: Object.assign([], _conf2.default.filter)
 	      };
-	      console.log("Url " + solrParams.solrSearchUrl);
 
 	      var facetMap = makeFacetMap();
 
@@ -27949,7 +27961,6 @@
 	}
 
 	exports.default = SearchApp;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 250 */
@@ -28317,23 +28328,13 @@
 	  var row4 = null;
 
 	  if (response) {
-
 	    row2 = _react2.default.createElement(
 	      'div',
 	      { className: 'row app_vsp05' },
 	      _react2.default.createElement(_stats2.default, { qtime: header.QTime,
 	        numFound: response.numFound,
 	        start: response.start,
-	        len: response.docs.length }),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-sm-4' },
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Refine search'
-	        )
-	      )
+	        len: response.docs.length })
 	    );
 
 	    if (haveResults) {
@@ -28346,6 +28347,24 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col-sm-4' },
+	          _react2.default.createElement(
+	            'h4',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Refine search'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'h5',
+	            { className: 'app_vsp25' },
+	            'Need:'
+	          ),
+	          _react2.default.createElement(_queryfacetlist2.default, { facets: [{ facet: "needfood", label: "Food" }, { facet: "needcloth", label: "Cloth" }, { facet: "needkit_util", label: "Kit" }, { facet: "needmed", label: "Medicine" }, { facet: "needrescue", label: "Rescue" }, { facet: "needtoilet", label: "Toilet" }, { facet: "needwater", label: "Water" }],
+	            facetData: facets,
+	            searchParams: props.searchParams,
+	            handleActions: props.handleActions }),
 	          _react2.default.createElement(
 	            'h5',
 	            { className: 'app_vsp25' },
@@ -28365,15 +28384,6 @@
 	            facet: "place",
 	            buckets: facets.place.buckets,
 	            filters: props.searchParams.filter_place,
-	            handleActions: props.handleActions }),
-	          _react2.default.createElement(
-	            'h5',
-	            { className: 'app_vsp25' },
-	            'Need:'
-	          ),
-	          _react2.default.createElement(_queryfacetlist2.default, { facets: [{ facet: "needfood", label: "Food" }, { facet: "needcloth", label: "Cloth" }, { facet: "needkit_util", label: "Kit" }, { facet: "needmed", label: "Medicine" }, { facet: "needrescue", label: "Rescue" }, { facet: "needtoilet", label: "Toilet" }, { facet: "needwater", label: "Water" }],
-	            facetData: facets,
-	            searchParams: props.searchParams,
 	            handleActions: props.handleActions })
 	        )
 	      );
@@ -28477,6 +28487,7 @@
 	    _this.state = { query: props.initialQuery || "" };
 	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    _this.onChange = _this.onChange.bind(_this);
+	    _this.iconClicked = _this.iconClicked.bind(_this);
 	    return _this;
 	  }
 
@@ -28497,8 +28508,16 @@
 	      this.setState({ query: event.target.value });
 	    }
 	  }, {
+	    key: "iconClicked",
+	    value: function iconClicked(text) {
+	      this.setState({ query: text });
+	      this.props.handleActions([(0, _actions.makeSetQueryAction)(text)]);
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        "form",
 	        { className: "navbar-form",
@@ -28517,6 +28536,46 @@
 	              _react2.default.createElement("i", { className: "glyphicon glyphicon-search" })
 	            )
 	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "row app_icon_row col-sm-8" },
+	          _react2.default.createElement("button", { className: "iconsbaby70px", onClick: function onClick() {
+	              return _this2.iconClicked("\"small kid\" baby കുഞ്ഞ് " + "കുട്ടികളു" + " കുട്ടി കുഞ്ഞിന്" + "\"മാസം പ്രായമായ\"");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconspregnant70px", onClick: function onClick() {
+	              return _this2.iconClicked("pregnant ഗർഭിണി ഗർഭിണിയായ");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconselder70px", onClick: function onClick() {
+	              return _this2.iconClicked("grandmother grandfather parents old elder aged പ്രായം");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconshungry70px", onClick: function onClick() {
+	              return _this2.iconClicked("food hunger പട്ടിണി" + " ഭക്ഷണം" + " ആഹാരം " + " ഫുഡ്‌  ");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconsmedicine70px", onClick: function onClick() {
+	              return _this2.iconClicked("asthmatic diabetic medicine Doxycycline mg insuline tablets" + " മരുന്ന്" + "  രോഗി   " + " മരുന്നെ");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconslate70px", onClick: function onClick() {
+	              return _this2.iconClicked("trapped \"2 days\" \"3 days\" \"4 days\" \"5 days\"");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconspeople70px", onClick: function onClick() {
+	              return _this2.iconClicked("ആളുകൾ " + " പേരോളം  " + " പേർക്കുള്ള " + "\"50 people\" \"100 people\" \"200 people\" \"300 people\" \"400 people\" \"500 people\" \"600 people\" \"700 people\" \"800 people\" \"900 people\" \"1000 people\" \"1100 people\" \"1200 people\" \"1300 people\" \"1400 people\" \"1500 people\"");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconswater70px", onClick: function onClick() {
+	              return _this2.iconClicked("water " + " വെള്ളം  ");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconscloth70px", onClick: function onClick() {
+	              return _this2.iconClicked("cloth undergarments Paavada nighty " + "വസ്ത്രങ്ങള്‍ " + " വസ്ത്രം");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconssanitary70px", onClick: function onClick() {
+	              return _this2.iconClicked("toilet " + " ടോയ്ലറ്റ്   " + "\"chlorine powder\"");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconsmissing70px", onClick: function onClick() {
+	              return _this2.iconClicked("missing contact find " + " കാണുന്നില്ല ");
+	            } }),
+	          _react2.default.createElement("button", { className: "iconsdisease70px", onClick: function onClick() {
+	              return _this2.iconClicked("\"loose motion\" vomiting patients mentally \"Urgent Medicine\" " + " പനി " + " fever cold ");
+	            } })
 	        )
 	      );
 	    }
@@ -28955,7 +29014,7 @@
 	      var thisPage = Math.floor(this.props.start / this.props.pageSize);
 	      var lastPage = Math.ceil(this.props.numFound / this.props.pageSize) - 1;
 	      var fromPage = Math.max(thisPage - 1, 0);
-	      var lastNumberedPage = Math.min(fromPage + 2, lastPage);
+	      var lastNumberedPage = Math.min(fromPage + 9, lastPage);
 	      var pages = [];
 
 	      // convenience function for links below
