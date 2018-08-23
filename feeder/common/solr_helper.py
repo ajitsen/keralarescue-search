@@ -2,6 +2,7 @@ import json
 import os
 import urllib.request
 import pandas as pd
+import numpy as np
 
 from common import config as config
 from common.logger import log
@@ -40,4 +41,4 @@ def get_data_frame_from_json(json_file, must_fields=None):
         data_frame = pd.read_json(fh, dtype=False)
         if isinstance(must_fields, list) and len(must_fields) != 0:
             data_frame.dropna(subset=must_fields, inplace=True)
-        return data_frame
+        return data_frame.replace(np.nan, ' ', regex=True)

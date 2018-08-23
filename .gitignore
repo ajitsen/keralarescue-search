@@ -44,4 +44,8 @@ package-lock.json
 data*.json
 data*.csv
 *.tgz
+/elastic_ops
+
+# Avoid saving credentials to git
+cred.py
 

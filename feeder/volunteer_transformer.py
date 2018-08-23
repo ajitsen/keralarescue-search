@@ -27,7 +27,7 @@ def process_volunteer_feed(data_frame, csv_file):
     data_frame['vehicle'] = pd.Series([get_vehicle(car_bike) for car_bike in zip(data_frame['car'], data_frame['bike'])])
     data_frame['car_b'] = pd.Series([has_car(car) for car in data_frame['car']])
     data_frame['bike_b'] = pd.Series([has_bike(bike) for bike in data_frame['bike']])
-    # FIXME add district
+    # TODO add district
     data_frame['district_full'] = pd.Series(["District" for code in data_frame['location']])
 
     data_frame.drop(columns=['car', 'bike'], inplace=True)

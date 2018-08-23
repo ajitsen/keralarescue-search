@@ -5,7 +5,6 @@ import urllib.request
 
 from common import config as config
 from common.logger import log
-from common.my_pandas import pandas_read_tsv_str
 
 
 def my_sleep(sec):
@@ -17,6 +16,7 @@ def my_sleep(sec):
     for i in range(sec):
         log("Sleeping...")
         time.sleep(1)
+
 
 def get_md5(string):
     return hashlib.md5(string.encode('utf-8')).hexdigest()
@@ -51,15 +51,6 @@ def _get_data_from_url(url):
     response = urllib.request.urlopen(req).read()
     string = response.decode('utf-8')
     return string
-
-
-def load_sheet_tsv_as_panda_df(sheet_url):
-    tsv_str = get_data_from_url(sheet_url, cache=True)
-    dataf = pandas_read_tsv_str(tsv_str)
-    log("Loaded data from ")
-    log(dataf.shape)
-    log(dataf.columns)
-    return dataf
 
 
 '''
