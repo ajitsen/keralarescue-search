@@ -39,3 +39,6 @@ class Test_Data(TestCase):
     def test_get_clean_json_data(self):
         self.assertEqual("clean test", data.get_clean_json_data("'clean@\n \"' # test'"))
 
+
+    def test_get_person_time(self):
+        self.assertEqual("2018-08-18T17:26:54Z", data.get_person_time("2018-08-18 17:26:54.283864+00:00"))

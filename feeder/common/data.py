@@ -1,4 +1,5 @@
 import math
+import re
 
 from slugify import slugify
 
@@ -57,8 +58,6 @@ def get_location_concact(location):
 
 
 def get_camp_id(camp_name, phone):
-    log("Processing camp: [" + str(camp_name) +"] [" + str(phone))
-
     camp_id = ''
     if camp_name and isinstance(camp_name, str) and camp_name != '':
         camp_name = str(camp_name)
@@ -85,3 +84,35 @@ def get_clean_json_data(title):
         for ch in "'\"*=/&^#@":
             title = title.replace(ch, '')
     return get_clean_str(title)
+
+
+def get_person_gender(gender_0_m):
+    if gender_0_m and ((isinstance(gender_0_m, float) and not math.isnan(gender_0_m)) or isinstance(gender_0_m, int)):
+        if gender_0_m > 0.5:
+            return "male"
+        else:
+            return "female"
+    else:
+        return "not-set"
+
+
+def get_person_time(date_str):
+    # 2018-08-18 17:26:54.283864+00:00 to 2018-08-18T17:26:54Z
+    if date_str and isinstance(date_str, str) and len(date_str) > 20:
+        date, rest = date_str.split(' ')
+        time = ''
+        if rest:
+            time = rest.split('.')[0]
+        return date + "T" + time + "Z"
+    # Default Value
+    return '2018-08-15T00:00:00Z'
+
+
+def get_clean_int(param):
+    if isinstance(param, int):
+        return param
+    if isinstance(param, str):
+        matched = re.search(r'\d+', param)
+        if matched:
+            return int(matched.group())
+    return 0

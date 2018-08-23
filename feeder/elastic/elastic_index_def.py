@@ -70,6 +70,77 @@ KERALA_RESCUE_INDEX_DEF = {
 }
 
 
+# Person Index definition - Searching persons at Camps
+# It needs a separate index since it has about 1.5L people
+# and this could demand more search volume
+
+PERSON_INDEX_DEF = {
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "text"
+        },
+        "phone": {
+          "type": "text"
+        },
+        "age": {
+          "type": "short"
+        },
+        "gender": {
+          "type": "keyword"
+        },
+        "address": {
+          "type": "text"
+        },
+        "district": {
+          "type": "keyword"
+        },
+        "notes": {
+          "type": "text"
+        },
+        "time_updated": {
+          "type": "date"
+        },
+        "checkin_date": {
+          "type": "date"
+        },
+        "checkout_date": {
+          "type": "date"
+        },
+        "status": {
+          "type": "keyword"
+        },
+        "camp_id": {
+          "type": "integer"
+        },
+        "camp_name": {
+          "type": "text"
+        },
+        "camp_location": {
+          "type": "text"
+        },
+        "camp_district": {
+          "type": "keyword"
+        },
+        "latlng": {
+          "type": "geo_point"
+        }
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_shards": 3,
+      "number_of_replicas": 1
+    }
+  }
+}
+
+
 # Single Demand Index,  created for every demand - Every point of time
 DEMAND_INDEX_DEF = {
   "mappings": {
@@ -125,3 +196,4 @@ DEMAND_INDEX_DEF = {
     }
   }
 }
+

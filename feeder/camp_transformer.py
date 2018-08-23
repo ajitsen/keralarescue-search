@@ -5,7 +5,6 @@ import common.data as data
 from common.logger import log
 
 
-
 def process_camp_feed(data_frame, csv_file):
     data_frame['campName'] = pd.Series([data.get_clean_str(camp_name) for camp_name in data_frame['campName']])
     data_frame['id'] = pd.Series([data.get_camp_id(camp_name, phone) for camp_name, phone in zip(data_frame['campName'], data_frame['contactNo'])])
