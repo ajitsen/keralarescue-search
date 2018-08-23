@@ -79,3 +79,9 @@ def get_clean_str(string):
     string = string.translate(' \n\t\r')
     return ' '.join(string.split())
 
+
+def get_clean_json_data(title):
+    if isinstance(title, str):
+        for ch in "'\"*=/,&^#@":
+            title = title.replace(ch, '')
+    return get_clean_str(title)

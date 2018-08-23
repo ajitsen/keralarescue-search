@@ -35,3 +35,7 @@ class Test_Data(TestCase):
 
     def test_get_clean_str(self):
         self.assertEqual("hello ajit", data.get_clean_str(" hello  \r \n ajit \n \r"))
+
+    def test_get_clean_json_data(self):
+        self.assertEqual("clean test", data.get_clean_json_data("'clean@\n \"' # test'"))
+

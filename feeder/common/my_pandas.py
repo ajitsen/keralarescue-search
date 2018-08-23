@@ -18,3 +18,10 @@ def load_sheet_tsv_as_panda_df(sheet_url, cache):
     log(dataf.shape)
     log(dataf.columns)
     return dataf
+
+
+def show_all_in_print():
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.expand_frame_repr', False)
+    pd.set_option('max_colwidth', -1)

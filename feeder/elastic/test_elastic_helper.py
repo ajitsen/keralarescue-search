@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from common.config import ELASTIC_CAMP_INDEX, ELASTIC_DEMAND_INDEX
-from common.elastic_helper import get_elastic_client, get_count_match_all
+import common.config as config
+from elastic.elastic_helper import get_elastic_client, get_count_match_all, get_count_match_data_type
 
 
 class TestElasticHelper_all(TestCase):
@@ -13,12 +13,12 @@ class TestElasticHelper_all(TestCase):
 
     def test_match_all_camp(self):
         client = get_elastic_client()
-        results = get_count_match_all(client, ELASTIC_CAMP_INDEX)
-        print(results)
-        self.assertTrue(results['hits']['total'] > 2)
+        count = 2
+        results = get_count_match_data_type(client, config.ELASTIC_INDEX, config.ELASTIC_CAMP_TYPE, count)
+        self.assertTrue(results == count)
 
     def test_match_all_demand(self):
         client = get_elastic_client()
-        results = get_count_match_all(client, ELASTIC_DEMAND_INDEX)
+        results = get_count_match_all(client, config.ELASTIC_DEMAND_TYPE)
         print(results)
         self.assertTrue(results['hits']['total'] > 2)

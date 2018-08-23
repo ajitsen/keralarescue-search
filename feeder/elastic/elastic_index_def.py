@@ -2,10 +2,13 @@
 
 # Add new fields
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html
-CAMP_INDEX_DEF = {
+KERALA_RESCUE_INDEX_DEF = {
   "mappings": {
     "_doc": {
       "properties": {
+        "data_type": {
+          "type": "keyword"
+        },
         "camp_name": {
           "type": "text"
         },
@@ -70,7 +73,7 @@ CAMP_INDEX_DEF = {
 # Single Demand Index,  created for every demand - Every point of time
 DEMAND_INDEX_DEF = {
   "mappings": {
-    "_doc": {
+    "camp": {
       "properties": {
         "demand_item": {
           "type": "text"

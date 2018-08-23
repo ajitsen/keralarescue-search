@@ -10,8 +10,9 @@ API_URL = "https://keralarescue.in/data"
 SOLR_URL = "http://localhost:8983/solr/krescue10/select"
 ELASTIC_HOST = "9516548ae97247d2a26da531143fb27a.ap-southeast-1.aws.found.io"
 ELASTIC_PORT = '9243'
-ELASTIC_CAMP_INDEX = 'camp_index'
-ELASTIC_DEMAND_INDEX = 'demand_index'
+ELASTIC_INDEX = 'kerala-rescue'
+ELASTIC_CAMP_TYPE = 'camp'
+ELASTIC_DEMAND_TYPE = 'demand'
 
 TEST_CAMP_ALAPY_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTkyEtVvIQtcApxe9cijuwK9QCGWVzQIdw7Fg-N2V7pCyZRFJjZ7qJ40hnQnhx-yHcYWkTSjHfJtsd3/pub?gid=0&single=true&output=tsv"
 TEST_CAMP_PATANAM_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTkyEtVvIQtcApxe9cijuwK9QCGWVzQIdw7Fg-N2V7pCyZRFJjZ7qJ40hnQnhx-yHcYWkTSjHfJtsd3/pub?gid=504181366&single=true&output=tsv"
