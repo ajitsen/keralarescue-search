@@ -9,9 +9,9 @@ def match_str(value, expected):
 def process_supply_feed(data_frame, csv_file):
     data_frame['id'] = pd.Series([num for num in data_frame['contactDetails']])
 
-    # FIXME add district
+    # TODO add district
     data_frame['district_full'] = pd.Series(["District" for code in data_frame["location(rough)"]])
-    # FIXME add organization
+    # TODO add organization
     data_frame['organisations'] = pd.Series(["Organization" for code in data_frame["contactDetails"]])
     data_frame['verified'] = pd.Series([match_str(val, 'verified') for val in data_frame['verifiedOrNot']])
     data_frame['available'] = pd.Series([match_str(val, 'available') for val in data_frame['availability']])

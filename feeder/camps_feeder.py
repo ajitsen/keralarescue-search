@@ -11,8 +11,7 @@ from volunteer_transformer import process_volunteer_feed
 
 
 def process(sheet_url, solr_collection):
-    # Fixme - remove cache param in production
-    json_file = save_data_json(sheet_url, cache=True)
+    json_file = save_data_json(sheet_url)
     csv_file = json_file.replace(".json", ".csv")
     elastic_bulk_actions = []
     if sheet_url == CAMP_SHEET:

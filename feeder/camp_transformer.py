@@ -9,15 +9,15 @@ from common.logger import log
 def process_camp_feed(data_frame, csv_file):
     data_frame['campName'] = pd.Series([data.get_clean_str(camp_name) for camp_name in data_frame['campName']])
     data_frame['id'] = pd.Series([data.get_camp_id(camp_name, phone) for camp_name, phone in zip(data_frame['campName'], data_frame['contactNo'])])
-    # FIXME add logic to call place finder
+    # TODO add logic to call place finder
     data_frame['latlng'] = pd.Series(['29.327685626916956,48.055961771640426' for location in data_frame['campName']])
-    # FIXME add district
+    # TODO add district
     data_frame['district_full'] = pd.Series(["District" for code in data_frame['campName']])
-    # FIXME process date modified
+    # TODO process date modified
     data_frame['last_modified'] = pd.Series(["2018-08-16T09:19:24.604Z" for code in data_frame['campName']])
-    # FIXME get processed_needs
+    # TODO get processed_needs
     data_frame['need_categories'] = pd.Series(["water,sanitation" for needs in data_frame['needs']])
-    # FIXME get Total Strength
+    # TODO get Total Strength
     data_frame['total_strength'] = pd.Series([1000 for needs in data_frame['strength']], dtype='int64')
     data_frame['total_strength'] = data_frame.total_strength.fillna(0).astype(int)
 
@@ -54,7 +54,7 @@ def create_solr_feed(csv_file, data_frame_copy):
 
 def create_elastic_feed(data_frame_copy, elastic_index, data_type):
 
-    # FIXME derive status - open closed
+    # TODO derive status - open closed
     data_frame_copy['status'] = pd.Series(["open" for code in data_frame_copy['campName']])
 
     data_frame_copy.rename(columns={
