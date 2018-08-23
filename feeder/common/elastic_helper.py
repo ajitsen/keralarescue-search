@@ -29,6 +29,11 @@ def get_count_match_all(client, index):
     return result
 
 
+def create_index(client, index, mapping_settings):
+    # ignore 400 cause by IndexAlreadyExistsException when creating an index
+    return client.indices.create(index=index, body=mapping_settings, ignore=400)
+
+
 
 
 
