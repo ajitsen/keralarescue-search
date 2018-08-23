@@ -82,6 +82,6 @@ def get_clean_str(string):
 
 def get_clean_json_data(title):
     if isinstance(title, str):
-        for ch in "'\"*=/,&^#@":
+        for ch in "'\"*=/&^#@":
             title = title.replace(ch, '')
     return get_clean_str(title)
