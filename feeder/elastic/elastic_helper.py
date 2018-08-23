@@ -5,6 +5,7 @@ from pip._vendor import certifi
 
 import cred
 from common.config import ELASTIC_HOST
+from common.logger import log
 
 '''
 Low Level Elastic Client https://elasticsearch-py.readthedocs.io/en/master/
@@ -49,7 +50,8 @@ def get_bulk_index_json(index, doc_id):
 def feed_bulk_to_elastic(bulk_actions):
     client = get_elastic_client()
     result = helpers.bulk(client, bulk_actions)
-    print(result)
+    log("Done. Feed bulk actions: " + str(len(bulk_actions)))
+    return result
 
 # PUT /requests_import
 # {

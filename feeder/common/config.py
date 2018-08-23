@@ -14,6 +14,8 @@ ELASTIC_INDEX = 'kerala-rescue'
 ELASTIC_CAMP_TYPE = 'camp'
 ELASTIC_DEMAND_TYPE = 'demand'
 
+ELASTIC_PERSON_INDEX = 'person'
+
 TEST_CAMP_ALAPY_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTkyEtVvIQtcApxe9cijuwK9QCGWVzQIdw7Fg-N2V7pCyZRFJjZ7qJ40hnQnhx-yHcYWkTSjHfJtsd3/pub?gid=0&single=true&output=tsv"
 TEST_CAMP_PATANAM_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTkyEtVvIQtcApxe9cijuwK9QCGWVzQIdw7Fg-N2V7pCyZRFJjZ7qJ40hnQnhx-yHcYWkTSjHfJtsd3/pub?gid=504181366&single=true&output=tsv"
 TEST_CAMP_ERN_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTkyEtVvIQtcApxe9cijuwK9QCGWVzQIdw7Fg-N2V7pCyZRFJjZ7qJ40hnQnhx-yHcYWkTSjHfJtsd3/pub?gid=476244282&single=true&output=tsv"
@@ -26,3 +28,4 @@ TEST_CAMP_PALAKAD_SHEET = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTkyE
 RESOURCE_SHEET = 'https://us-central1-relief-camp-data.cloudfunctions.net/getResourcesSheet'
 CAMP_SHEET = 'https://us-central1-relief-camp-data.cloudfunctions.net/getReliefCampsSheet'
 VOLUNTEER_SHEET = 'https://us-central1-relief-camp-data.cloudfunctions.net/getVolunteersSheet'
+
