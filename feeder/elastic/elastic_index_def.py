@@ -66,3 +66,59 @@ CAMP_INDEX_DEF = {
   }
 }
 
+
+# Single Demand Index,  created for every demand - Every point of time
+DEMAND_INDEX_DEF = {
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "demand_item": {
+          "type": "text"
+        },
+        "id": {
+          "type": "keyword"
+        },
+        "has_met": {
+          "type": "boolean"
+        },
+        "source_index": {
+          "type": "keyword"
+        },
+        "source_index_id": {
+          "type": "keyword"
+        },
+        "contact_name": {
+          "type": "text"
+        },
+        "contact_phone": {
+          "type": "text"
+        },
+        "time_updated_str": {
+          "type": "text"
+        },
+        "place": {
+          "type": "text"
+        },
+        "district": {
+          "type": "keyword"
+        },
+        "time_updated": {
+          "type": "date"
+        },
+        "latlng": {
+          "type": "geo_point"
+        },
+
+        "people_count": {
+          "type": "short"
+        }
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_shards": 2,
+      "number_of_replicas": 1
+    }
+  }
+}
